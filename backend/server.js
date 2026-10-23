@@ -92,26 +92,39 @@ app.put('/api/produtos/:id', async (req, res) => {
   }
 });
 
-// 3. PUT: Atualizar dados de uma produto
+
+ // 3. PUT: Atualizar dados de um fornecedor
 app.put('/api/fornecedores/:id', async (req, res) => {
   const { id } = req.params;
   const { razao_social, cnpj, contato, telefone } = req.body;
 
   try {
     const [result] = await db.query(
-      'UPDATE fornecedores SET razao_social = ?, cnpj = ?, contato = ?, telefone = ? WHERE id = ?',
-      [nome, descricao || null, quantidade, preco, id],
+      `UPDATE fornecedores
+       SET razao_social = ?, cnpj = ?, contato = ?, telefone = ?
+       WHERE id = ?`,
+      [razao_social, cnpj, contato, telefone, id]
     );
 
     if (result.affectedRows === 0) {
-      return res.status(404).json({ erro: 'Fornecedor não encontrada.' });
+      return res.status(404).json({
+        erro: 'Fornecedor não encontrado.'
+      });
     }
-    res.json({ mensagem: 'Fornecedor atualizado com sucesso.' });
+
+    return res.json({
+      mensagem: 'Fornecedor atualizado com sucesso.'
+    });
+
   } catch (err) {
-    res.status(500).json({ erro: 'Falha ao atualizar dados.' });
-    console.log(err);
+    console.error('Erro ao atualizar fornecedor:', err);
+
+    return res.status(500).json({
+      erro: 'Falha ao atualizar dados.'
+    });
   }
 });
+
 
 // 4. PATCH: Soft delete (desativação lógica)
 app.patch('/api/produtos/:id/desativar', async (req, res) => {

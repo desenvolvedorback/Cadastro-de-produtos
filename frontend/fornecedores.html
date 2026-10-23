@@ -15,23 +15,23 @@
       <input type="hidden" id="produtoId">
 
       <div class="campo">
-        <label for="nome">Razão Social:</label>
+        <label for="razao_social">Razão Social:</label>
         <input type="text" id="razao_social" required placeholder="Ex: Petrobas BRASIL">
       </div>
 
       <div class="campo">
-        <label for="descricao">CNPJ:</label>
-        <input type="descricao" id="cnpj" required placeholder="Ex: 12345678901234">
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" required placeholder="Ex: 12345678901234">
       </div>
 
       <div class="campo">
-        <label for="descricao">Contato:</label>
-        <input type="descricao" id="contato" required placeholder="Ex: petobrar@email.com">
+        <label for="contato">Contato:</label>
+        <input type="email" id="contato" required placeholder="Ex: petobrar@email.com">
       </div>
 
       <div class="campo">
-        <label for="descricao">Telefone:</label>
-        <input type="descricao" id="telefone" required placeholder="Ex: (11) 99888-1111">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" required placeholder="Ex: (11) 99888-1111">
       </div>
 
       <div class="botoes-form">
@@ -53,6 +53,7 @@
             <th>CNPJ</th>
             <th>Contato</th>
             <th>Telefone</th>
+            <th>Ativo</th>
           </tr>
         </thead>
         <tbody id="tabelaCorpo"></tbody>
